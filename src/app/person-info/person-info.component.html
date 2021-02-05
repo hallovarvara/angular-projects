@@ -1,0 +1,20 @@
+<h3>{{i + 1}}. Name: {{person.firstName}} {{person.lastName}}</h3>
+
+<!--<p *ngIf="person.age; else elseBlock">Age: {{person.age}}</p>-->
+
+<div *ngIf="person.age; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+  <p>Age: {{person.age}}</p>
+</ng-template>
+<ng-template #elseBlock>
+  <p>Age not specified</p>
+</ng-template>
+
+<p>Favourite Foods:</p>
+<p *ngIf="!person.favouriteFood">No favourite food specified</p>
+<ul *ngIf="person.favouriteFood">
+  <li *ngFor="let food of person.favouriteFood">{{food}}</li>
+</ul>
+
+<button (click)="onButtonClick(person.firstName)">Click me</button>
+
